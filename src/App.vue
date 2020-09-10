@@ -4,15 +4,18 @@
   </div>
 </template>
 <script>
-// 封装的SessionStorage api
-import ss from "./storage";
-
 export default {
   name: "app",
   mounted: function () {
-    ss.setItem("user", {});
+    // this.axios.get("/api/user/login").then(function (res) {
+    //   console.log(res);
+    // });
   },
 };
 </script>
-<style>
+<style lang="scss">
+// 项目初始化样式
+@import "./assets/scss/reset.scss";
+// 字体图标
+@import "./assets/font/iconfont.css";
 </style>

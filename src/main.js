@@ -6,14 +6,18 @@ import axios from 'axios'
 import VueAxios from 'vue-axios'
 import env from './env'
 
-Vue.use(VueAxios, axios);
 
 Vue.config.productionTip = false
 
+const mock = false;
+if (mock) {
+  require('./mock/api');
+}
+
+Vue.use(VueAxios, axios);
 // axios配置
 axios.defaults.timeout = 5000;
 axios.defaults.baseUrl = env.baseUrl;
-
 // axios请求拦截器
 axios.interceptors.request.use(function (config) {
   // 在发送请求之前做些什么,比如添加请求头
@@ -22,6 +26,7 @@ axios.interceptors.request.use(function (config) {
   // 对请求错误做些什么
   return Promise.reject(error);
 });
+
 // axios响应拦截器
 axios.interceptors.response.use(function (res) {
   let data = res.data;

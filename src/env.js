@@ -1,7 +1,7 @@
 let baseUrl;
 switch (process.env.NODE_ENV) {
     case 'development':
-        baseUrl = "/deve";
+        baseUrl = "/api";
         break;
     case 'production':
         baseUrl = "/pro";
@@ -10,7 +10,6 @@ switch (process.env.NODE_ENV) {
         baseUrl = "/pro";
         break;
 }
-
 export default {
     baseUrl
 }
