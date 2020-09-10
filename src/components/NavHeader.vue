@@ -39,7 +39,6 @@
         </div>
       </div>
     </div>
-
     <div class="nav-header">
       <div class="container">
         <div class="logo"></div>
@@ -49,47 +48,12 @@
             <div class="children">
               <ul>
                 <!-- 可以使用v-for循环渲染 -->
-                <li class="pro">
+                <li v-for="(item,index) in items" :key="index" class="pro">
                   <a href="javascript:;" class="item-img">
-                    <img src="../public/imgs/nav-img/nav-1.png" alt />
+                    <img v-lazy="item.img" :alt="item.name" />
                   </a>
-                  <a href="javascript:;" class="item-name">小米cc9</a>
-                  <a href="javascript:;" class="item-price">￥1999</a>
-                </li>
-                <li class="pro">
-                  <a href="javascript:;" class="item-img">
-                    <img src="../public/imgs/nav-img/nav-2.png" alt />
-                  </a>
-                  <a href="javascript:;" class="item-name">小米cc9e</a>
-                  <a href="javascript:;" class="item-price">￥1000</a>
-                </li>
-                <li class="pro">
-                  <a href="javascript:;" class="item-img">
-                    <img src="../public/imgs/nav-img/nav-3.png" alt />
-                  </a>
-                  <a href="javascript:;" class="item-name">小米cc9Pro</a>
-                  <a href="javascript:;" class="item-price">￥4999</a>
-                </li>
-                <li class="pro">
-                  <a href="javascript:;" class="item-img">
-                    <img src="../public/imgs/nav-img/nav-4.png" alt />
-                  </a>
-                  <a href="javascript:;" class="item-name">小米9</a>
-                  <a href="javascript:;" class="item-price">￥2999</a>
-                </li>
-                <li class="pro">
-                  <a href="javascript:;" class="item-img">
-                    <img src="../public/imgs/nav-img/nav-5.png" alt />
-                  </a>
-                  <a href="javascript:;" class="item-name">小米10</a>
-                  <a href="javascript:;" class="item-price">￥1999</a>
-                </li>
-                <li class="pro">
-                  <a href="javascript:;" class="item-img">
-                    <img src="../public/imgs/nav-img/nav-6.png" alt />
-                  </a>
-                  <a href="javascript:;" class="item-name">小米Mix2s</a>
-                  <a href="javascript:;" class="item-price">￥1999</a>
+                  <a href="javascript:;" class="item-name">{{item.name}}</a>
+                  <a href="javascript:;" class="item-price">{{item.price}}</a>
                 </li>
               </ul>
             </div>
@@ -120,6 +84,7 @@
 <script>
 export default {
   name: "nav-header",
+  props: ["items"],
 };
 </script>
 
@@ -225,12 +190,12 @@ export default {
       }
       .production {
         display: flex;
-        height: 88px;
+        height: 100px;
         align-items: center;
         justify-items: center;
         .item-menu {
-          height: 88px;
-          line-height: 88px;
+          height: 100px;
+          line-height: 100px;
           margin: 0 10px;
           font-size: 16px;
           color: rgb(51, 51, 51);

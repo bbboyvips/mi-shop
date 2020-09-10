@@ -5,7 +5,7 @@ import store from './store'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 import env from './env'
-
+import VueLazyload from 'vue-lazyload'
 
 Vue.config.productionTip = false
 
@@ -33,6 +33,13 @@ axios.interceptors.response.use(function (res) {
   // if (data.status === 0) {} else {}
   console.log(data);
 });
+
+Vue.use(VueLazyload, {
+  preLoad: 1.3,
+  // error: 'dist/error.png',
+  loading: require('./public/imgs/loading-svg/loading-bars.svg'),
+  attempt: 1
+})
 
 new Vue({
   router,
