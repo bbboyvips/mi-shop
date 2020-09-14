@@ -30,11 +30,14 @@
           <a href="javascript:;">Select Location</a>
         </div>
         <div class="topbar-user">
-          <a href="javascript:;">登录</a>
-          <a href="javascript:;">注册</a>
+          <a v-if="!username" href="javascript:;" @click="toLogin">登录</a>
+          <a v-if="!username" href="javascript:;">注册</a>
+          <a v-if="username" href="javascript:;">{{username}}</a>
           <a href="javascript:;">消息通知</a>
+          <a v-if="username" href="javascript:;">我的订单</a>
           <a href="javascript:;" class="cart">
-            <span class="cart-icon iconfont icon-icon4"></span> 购物车
+            <span class="cart-icon iconfont icon-icon4"></span>
+            购物车({{cartCount}})
           </a>
         </div>
       </div>
@@ -82,9 +85,24 @@
   </div>
 </template>
 <script>
+import { mapState } from "vuex";
+
 export default {
   name: "nav-header",
   props: ["items"],
+  data() {
+    return {};
+  },
+  computed: {
+    // 映射vuex的属性
+    ...mapState(["username", "cartCount"]),
+  },
+  mounted() {},
+  methods: {
+    toLogin() {
+      this.$router.push("/login");
+    },
+  },
 };
 </script>
 
@@ -121,6 +139,8 @@ export default {
       .topbar-user {
         height: 39px;
         a {
+          height: 39px;
+
           display: inline-block;
           margin-left: 8px;
           color: rgb(176, 176, 176);
@@ -135,11 +155,14 @@ export default {
           background-color: rgb(66, 66, 66);
           text-align: center;
           transition: all 0.2s;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          vertical-align: bottom;
           &:hover {
             background-color: $colorG;
             color: $colorA;
           }
-
           .cart-icon {
             display: inline-block;
             vertical-align: -2px;

@@ -4,12 +4,27 @@
   </div>
 </template>
 <script>
+import { mapActions } from "vuex";
+
 export default {
   name: "app",
   mounted: function () {
-    // this.axios.get("/api/user/login").then(function (res) {
-    //   console.log(res);
-    // });
+    this.getUser();
+    this.getCartCount();
+  },
+  methods: {
+    ...mapActions(["saveUserName", "saveCartCount"]),
+    getUser() {
+      // 通过缓存在cookie里的userid进行数据请求
+      this.axios.get("/api/user").then((data) => {
+        this.saveUserName(data.name);
+      });
+    },
+    getCartCount() {
+      this.axios.get("/api/carts/sum").then((data) => {
+        this.saveCartCount(data.count);
+      });
+    },
   },
 };
 </script>

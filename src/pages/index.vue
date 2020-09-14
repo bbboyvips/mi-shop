@@ -1527,28 +1527,44 @@ export default {
     Modal,
   },
   mounted() {
-    // 欢迎弹窗
-    setTimeout(() => {
-      this.modal.showModel = true;
-    }, 1000);
+    // 轮播图
+    this.SwiperInit();
+    // 欢迎
+    this.welcome(3000);
+  },
+  methods: {
     // 初始化swiper 轮播图
-    new Swiper(".swiper-container", {
-      loop: true, // 循环模式选项
-      autoplay: {
-        delay: 3000,
-        disableOnInteraction: false,
-      }, // 自动播放 3秒
-      observer: true,
-      navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
-      },
-      pagination: {
-        el: ".swiper-pagination",
-        clickable: true,
-      },
-      effect: "fade",
-    });
+    SwiperInit() {
+      new Swiper(".swiper-container", {
+        loop: true, // 循环模式选项
+        autoplay: {
+          delay: 3000,
+          disableOnInteraction: false,
+        }, // 自动播放 3秒
+        observer: true,
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+        effect: "fade",
+      });
+    },
+    // 欢迎
+    welcome(time) {
+      // console.log(this.$storage);
+      // 如果是本地会话第一次打开,就展示
+      if (this.$storage.getItem("welcome")) {
+        return;
+      }
+      setTimeout(() => {
+        this.modal.showModel = true;
+        this.$storage.setItem("welcome", true);
+      }, time);
+    },
   },
 };
 </script>
@@ -1684,8 +1700,14 @@ export default {
   justify-content: space-between;
   .ad-img {
     width: 295px;
+    height: 170px;
     background-color: #ffae31;
     overflow: hidden;
+    a {
+      display: block;
+      height: 170px;
+      width: 295px;
+    }
     img {
       height: 170px;
     }

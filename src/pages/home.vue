@@ -59,7 +59,9 @@ export default {
     NavHeader,
     NavFooter,
   },
+  mounted() {},
+  methods: {},
 };
 </script>
 
-<style lang="less" scoped></style>
+<style lang="scss" scoped></style>
