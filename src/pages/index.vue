@@ -17,7 +17,7 @@
               <div class="menu-container">
                 <ul>
                   <li v-for="(item,index) in menu.items" :key="index">
-                    <a href="javascript:;">
+                    <a :href="'/#/product/'+item.id">
                       <img v-lazy="item.img" />
                       <span>{{item.name}}</span>
                     </a>
@@ -1569,7 +1569,7 @@ export default {
 };
 </script>
 
-<style lang="scss"  >
+<style lang="scss"  scope>
 @import "../assets/scss/config.scss";
 // 轮播菜单
 .swiper-box {

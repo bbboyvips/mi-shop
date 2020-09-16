@@ -3,7 +3,7 @@
     <div class="nav-topbar">
       <div class="container">
         <div class="topbar-menu">
-          <a href="javascript:;">小米商城</a>
+          <a href="/">小米商城</a>
           <span>|</span>
           <a href="javascript:;">MIUI</a>
           <span>|</span>
@@ -44,7 +44,9 @@
     </div>
     <div class="nav-header">
       <div class="container">
-        <div class="logo"></div>
+        <div>
+          <a href="/" class="logo"></a>
+        </div>
         <div class="production">
           <div class="item-menu">
             <span>小米手机</span>
@@ -182,6 +184,7 @@ export default {
       width: $min-width;
       // background-color: pink;
       .logo {
+        display: block;
         height: 55px;
         width: 55px;
         overflow: hidden;

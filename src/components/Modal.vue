@@ -97,7 +97,6 @@ export default {
       line-height: 60px;
       text-align: center;
       background-color: $colorJ;
-
       font-size: 18px;
       font-weight: 400;
       color: #424242;
