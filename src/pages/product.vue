@@ -2,7 +2,7 @@
   <div>
     <ProductParam>
       <template v-slot:buy>
-        <a href="javascript:;">立即送钱</a>
+        <a class="buy" :href="'/#/detail/'+id">立即送钱</a>
       </template>
     </ProductParam>
 
@@ -11,7 +11,7 @@
         <div class="section1"></div>
         <div class="section2">
           <a href="javascript:;" @click="videoHandler"></a>
-          <video src="../public/videos/product/mi10_1.mp4" loop autoplay></video>
+          <video src="../public/videos/product/mi10_1.mp4" muted loop autoplay></video>
         </div>
         <div class="section3">
           <div class="readme">
@@ -60,6 +60,7 @@
         </div>
       </div>
     </div>
+
     <!-- 视频模态框 -->
     <div class="video-dialog" :class="{'video-dialog-show':isShowVideo}" @click.self="closeVideo">
       <div class="video-container">
@@ -79,9 +80,13 @@ export default {
   name: "product",
   data() {
     return {
+      id: this.$route.params.id, //获取商品ID
+      // 是否展示视频模态框
       isShowVideo: false,
       // 模态框video元素
       video: null,
+      // 导航栏选中数据
+      check: 0,
     };
   },
   components: { ProductParam },
@@ -129,6 +134,22 @@ export default {
 
 <style lang="scss" >
 @import "../assets/scss/mixin.scss";
+
+.product-nav .container .product-menu a.buy {
+  color: #fff;
+  display: inline-block;
+  background-color: #ff6600;
+  height: 30px;
+  width: 118px;
+  font-size: 12px;
+  line-height: 30px;
+  margin-left: 5px;
+  vertical-align: inherit;
+  text-align: center;
+  &:hover {
+    color: #fff;
+  }
+}
 
 .pro-container {
   background: #000;
@@ -228,7 +249,7 @@ export default {
   z-index: 5;
   transition: opacity 0.5s;
   .video-container {
-    @include position(absolute, -100%, 50%, 1196px, 561px);
+    @include position(absolute, -100%, 50%, 997px, 561px);
     transform: translate(-50%, -50%);
     opacity: 0;
     transition: top, opacity 0.5s;

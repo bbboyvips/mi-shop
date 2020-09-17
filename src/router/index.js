@@ -62,7 +62,14 @@ const routes = [
       }
 
     ]
+  },
+  // 未被匹配到的路由全都重定向到首页,或者专门的错误导航页面
+  {
+    path: '*',
+    name: 'other',
+    redirect: '/index',
   }
+
 ]
 
 const router = new VueRouter({

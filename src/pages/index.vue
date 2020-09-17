@@ -33,7 +33,7 @@
         <div class="swiper-wrapper">
           <div class="swiper-slide" v-for="(item,index) in swipers" :key="index">
             <a href="javascript:;">
-              <img v-lazy="item.img" />
+              <img :src="item.img" />
             </a>
           </div>
         </div>
@@ -135,7 +135,7 @@ export default {
           content: "手机 电话卡",
           items: [
             {
-              id: 1,
+              id: 30,
               name: "小米9(可点击)",
               img: require("../public/imgs/item-box-1.png"),
             },

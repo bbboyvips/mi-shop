@@ -45,7 +45,7 @@ export default {
 
     submit() {
       // 网络请求
-      this.axios.post("/api/login").then((data) => {
+      this.axios.post("/api/login", this.user).then((data) => {
         // 根据业务需求对data进行一系列判断,此处简单一点
         if (data) {
           // 将用户id存入cookie
