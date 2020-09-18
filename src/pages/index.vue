@@ -103,11 +103,9 @@
 // 引入组件
 import ServiceBar from "../components/ServiceBar";
 import Modal from "../components/Modal";
-
 // swiper
 import Swiper from "swiper";
 import "swiper/dist/css/swiper.min.css";
-
 export default {
   name: "index",
   data() {
@@ -1569,7 +1567,7 @@ export default {
 };
 </script>
 
-<style lang="scss"  scope>
+<style lang="scss"  scoped>
 @import "../assets/scss/config.scss";
 // 轮播菜单
 .swiper-box {
