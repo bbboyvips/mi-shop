@@ -5,10 +5,10 @@
       <!-- 侧栏菜单 -->
       <div class="menu-nav">
         <ul>
-          <li v-for="(menu,index)  in navmenus" :key="index">
+          <li v-for="(menu, index) in navmenus" :key="index">
             <div class="menu-item">
               <a href="javascript:;">
-                {{menu.content}}
+                {{ menu.content }}
                 <i class="iconfont icon-tubiao-"></i>
               </a>
             </div>
@@ -16,10 +16,10 @@
             <div class="menu-child">
               <div class="menu-container">
                 <ul>
-                  <li v-for="(item,index) in menu.items" :key="index">
-                    <a :href="'/#/product/'+item.id">
+                  <li v-for="(item, index) in menu.items" :key="index">
+                    <a :href="'/#/product/' + item.id">
                       <img v-lazy="item.img" />
-                      <span>{{item.name}}</span>
+                      <span>{{ item.name }}</span>
                     </a>
                   </li>
                 </ul>
@@ -31,7 +31,11 @@
       <!-- 轮播图 -->
       <div class="swiper-container">
         <div class="swiper-wrapper">
-          <div class="swiper-slide" v-for="(item,index) in swipers" :key="index">
+          <div
+            class="swiper-slide"
+            v-for="(item, index) in swipers"
+            :key="index"
+          >
             <a href="javascript:;">
               <img :src="item.img" />
             </a>
@@ -44,7 +48,7 @@
     </div>
     <!-- 首页广告位 -->
     <div class="ad">
-      <div class="ad-img" v-for="(item,index) in adimgs" :key="index">
+      <div class="ad-img" v-for="(item, index) in adimgs" :key="index">
         <a href>
           <img v-lazy="item" />
         </a>
@@ -66,14 +70,15 @@
         </div>
         <div class="right">
           <ul>
-            <li v-for="(item,index) in products" :key="index">
+            <li v-for="(item, index) in products" :key="index">
               <a href="javascript:;">
                 <img v-lazy="item.img" :alt="item.name" />
-                <h3 class="name">{{item.name}}</h3>
-                <p class="msg">{{item.msg}}</p>
+                <h3 class="name">{{ item.name }}</h3>
+                <p class="msg">{{ item.msg }}</p>
                 <p class="price">
-                  <span>{{item.price}}</span>元起
-                  <del class="del">{{item.price}}元</del>
+                  <span>{{ item.price }}</span
+                  >元起
+                  <del class="del">{{ item.price }}元</del>
                 </p>
               </a>
             </li>
@@ -85,8 +90,8 @@
     <service-bar></service-bar>
     <!-- 模态框 -->
     <modal
-      @submit="modal.showModel=false"
-      @cancel="modal.showModel=false"
+      @submit="modal.showModel = false"
+      @cancel="modal.showModel = false"
       :showModel="modal.showModel"
       :title="modal.title"
       :btnType="modal.btnType"
@@ -106,6 +111,7 @@ import Modal from "../components/Modal";
 // swiper
 import Swiper from "swiper";
 import "swiper/dist/css/swiper.min.css";
+
 export default {
   name: "index",
   data() {
@@ -119,1439 +125,62 @@ export default {
         cancelText: "勉强体验一回吧",
       },
       // 轮播图数据
-      swipers: [
-        { img: require("../public/imgs/slider/slide-1.jpg") },
-        { img: require("../public/imgs/slider/slide-2.jpg") },
-        { img: require("../public/imgs/slider/slide-3.jpg") },
-        { img: require("../public/imgs/slider/slide-4.jpg") },
-        { img: require("../public/imgs/slider/slide-5.jpg") },
-      ],
+      swipers: [],
       // 轮播图菜单数据
-      navmenus: [
-        {
-          id: 1,
-          content: "手机 电话卡",
-          items: [
-            {
-              id: 30,
-              name: "小米9(可点击)",
-              img: require("../public/imgs/item-box-1.png"),
-            },
-            {
-              id: 2,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-            {
-              id: 3,
-
-              name: "小米8",
-              img: require("../public/imgs/item-box-2.png"),
-            },
-            {
-              id: 4,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-            {
-              id: 1,
-              name: "小米9",
-              img: require("../public/imgs/item-box-1.png"),
-            },
-            {
-              id: 2,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-            {
-              id: 3,
-
-              name: "小米8",
-              img: require("../public/imgs/item-box-2.png"),
-            },
-            {
-              id: 4,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-            {
-              id: 1,
-              name: "小米9",
-              img: require("../public/imgs/item-box-1.png"),
-            },
-            {
-              id: 2,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-            {
-              id: 3,
-
-              name: "小米8",
-              img: require("../public/imgs/item-box-2.png"),
-            },
-            {
-              id: 4,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-            {
-              id: 1,
-              name: "小米9",
-              img: require("../public/imgs/item-box-1.png"),
-            },
-            {
-              id: 2,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-            {
-              id: 3,
-
-              name: "小米8",
-              img: require("../public/imgs/item-box-2.png"),
-            },
-            {
-              id: 4,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-            {
-              id: 1,
-              name: "小米9",
-              img: require("../public/imgs/item-box-1.png"),
-            },
-            {
-              id: 2,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-            {
-              id: 3,
-
-              name: "小米8",
-              img: require("../public/imgs/item-box-2.png"),
-            },
-            {
-              id: 4,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-            {
-              id: 1,
-              name: "小米9",
-              img: require("../public/imgs/item-box-1.png"),
-            },
-            {
-              id: 2,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-            {
-              id: 3,
-
-              name: "小米8",
-              img: require("../public/imgs/item-box-2.png"),
-            },
-            {
-              id: 4,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-          ],
-        },
-        {
-          id: 2,
-          content: "电视 盒子",
-          items: [
-            {
-              id: 1,
-              name: "小米9",
-              img: require("../public/imgs/item-box-1.png"),
-            },
-            {
-              id: 2,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-            {
-              id: 3,
-
-              name: "小米8",
-              img: require("../public/imgs/item-box-2.png"),
-            },
-            {
-              id: 4,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-            {
-              id: 1,
-              name: "小米9",
-              img: require("../public/imgs/item-box-1.png"),
-            },
-            {
-              id: 2,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-            {
-              id: 3,
-
-              name: "小米8",
-              img: require("../public/imgs/item-box-2.png"),
-            },
-            {
-              id: 4,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-            {
-              id: 1,
-              name: "小米9",
-              img: require("../public/imgs/item-box-1.png"),
-            },
-            {
-              id: 2,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-            {
-              id: 3,
-
-              name: "小米8",
-              img: require("../public/imgs/item-box-2.png"),
-            },
-            {
-              id: 4,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-            {
-              id: 1,
-              name: "小米9",
-              img: require("../public/imgs/item-box-1.png"),
-            },
-            {
-              id: 2,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-            {
-              id: 3,
-
-              name: "小米8",
-              img: require("../public/imgs/item-box-2.png"),
-            },
-            {
-              id: 4,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-            {
-              id: 1,
-              name: "小米9",
-              img: require("../public/imgs/item-box-1.png"),
-            },
-            {
-              id: 2,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-            {
-              id: 3,
-
-              name: "小米8",
-              img: require("../public/imgs/item-box-2.png"),
-            },
-            {
-              id: 4,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-            {
-              id: 1,
-              name: "小米9",
-              img: require("../public/imgs/item-box-1.png"),
-            },
-            {
-              id: 2,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-            {
-              id: 3,
-
-              name: "小米8",
-              img: require("../public/imgs/item-box-2.png"),
-            },
-            {
-              id: 4,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-          ],
-        },
-        {
-          id: 3,
-          content: "笔记本 显示器",
-          items: [
-            {
-              id: 1,
-              name: "小米9",
-              img: require("../public/imgs/item-box-1.png"),
-            },
-            {
-              id: 2,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-            {
-              id: 3,
-
-              name: "小米8",
-              img: require("../public/imgs/item-box-2.png"),
-            },
-            {
-              id: 4,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-            {
-              id: 1,
-              name: "小米9",
-              img: require("../public/imgs/item-box-1.png"),
-            },
-            {
-              id: 2,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-            {
-              id: 3,
-
-              name: "小米8",
-              img: require("../public/imgs/item-box-2.png"),
-            },
-            {
-              id: 4,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-            {
-              id: 1,
-              name: "小米9",
-              img: require("../public/imgs/item-box-1.png"),
-            },
-            {
-              id: 2,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-            {
-              id: 3,
-
-              name: "小米8",
-              img: require("../public/imgs/item-box-2.png"),
-            },
-            {
-              id: 4,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-            {
-              id: 1,
-              name: "小米9",
-              img: require("../public/imgs/item-box-1.png"),
-            },
-            {
-              id: 2,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-            {
-              id: 3,
-
-              name: "小米8",
-              img: require("../public/imgs/item-box-2.png"),
-            },
-            {
-              id: 4,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-            {
-              id: 1,
-              name: "小米9",
-              img: require("../public/imgs/item-box-1.png"),
-            },
-            {
-              id: 2,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-            {
-              id: 3,
-
-              name: "小米8",
-              img: require("../public/imgs/item-box-2.png"),
-            },
-            {
-              id: 4,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-            {
-              id: 1,
-              name: "小米9",
-              img: require("../public/imgs/item-box-1.png"),
-            },
-            {
-              id: 2,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-            {
-              id: 3,
-
-              name: "小米8",
-              img: require("../public/imgs/item-box-2.png"),
-            },
-            {
-              id: 4,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-          ],
-        },
-        {
-          id: 4,
-          content: "家电 插线板",
-          items: [
-            {
-              id: 1,
-              name: "小米9",
-              img: require("../public/imgs/item-box-1.png"),
-            },
-            {
-              id: 2,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-            {
-              id: 3,
-
-              name: "小米8",
-              img: require("../public/imgs/item-box-2.png"),
-            },
-            {
-              id: 4,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-            {
-              id: 1,
-              name: "小米9",
-              img: require("../public/imgs/item-box-1.png"),
-            },
-            {
-              id: 2,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-            {
-              id: 3,
-
-              name: "小米8",
-              img: require("../public/imgs/item-box-2.png"),
-            },
-            {
-              id: 4,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-            {
-              id: 1,
-              name: "小米9",
-              img: require("../public/imgs/item-box-1.png"),
-            },
-            {
-              id: 2,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-            {
-              id: 3,
-
-              name: "小米8",
-              img: require("../public/imgs/item-box-2.png"),
-            },
-            {
-              id: 4,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-            {
-              id: 1,
-              name: "小米9",
-              img: require("../public/imgs/item-box-1.png"),
-            },
-            {
-              id: 2,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-            {
-              id: 3,
-
-              name: "小米8",
-              img: require("../public/imgs/item-box-2.png"),
-            },
-            {
-              id: 4,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-            {
-              id: 1,
-              name: "小米9",
-              img: require("../public/imgs/item-box-1.png"),
-            },
-            {
-              id: 2,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-            {
-              id: 3,
-
-              name: "小米8",
-              img: require("../public/imgs/item-box-2.png"),
-            },
-            {
-              id: 4,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-            {
-              id: 1,
-              name: "小米9",
-              img: require("../public/imgs/item-box-1.png"),
-            },
-            {
-              id: 2,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-            {
-              id: 3,
-
-              name: "小米8",
-              img: require("../public/imgs/item-box-2.png"),
-            },
-            {
-              id: 4,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-          ],
-        },
-        {
-          id: 5,
-          content: "出行 穿戴",
-          items: [
-            {
-              id: 1,
-              name: "小米9",
-              img: require("../public/imgs/item-box-1.png"),
-            },
-            {
-              id: 2,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-            {
-              id: 3,
-
-              name: "小米8",
-              img: require("../public/imgs/item-box-2.png"),
-            },
-            {
-              id: 4,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-            {
-              id: 1,
-              name: "小米9",
-              img: require("../public/imgs/item-box-1.png"),
-            },
-            {
-              id: 2,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-            {
-              id: 3,
-
-              name: "小米8",
-              img: require("../public/imgs/item-box-2.png"),
-            },
-            {
-              id: 4,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-            {
-              id: 1,
-              name: "小米9",
-              img: require("../public/imgs/item-box-1.png"),
-            },
-            {
-              id: 2,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-            {
-              id: 3,
-
-              name: "小米8",
-              img: require("../public/imgs/item-box-2.png"),
-            },
-            {
-              id: 4,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-            {
-              id: 1,
-              name: "小米9",
-              img: require("../public/imgs/item-box-1.png"),
-            },
-            {
-              id: 2,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-            {
-              id: 3,
-
-              name: "小米8",
-              img: require("../public/imgs/item-box-2.png"),
-            },
-            {
-              id: 4,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-            {
-              id: 1,
-              name: "小米9",
-              img: require("../public/imgs/item-box-1.png"),
-            },
-            {
-              id: 2,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-            {
-              id: 3,
-
-              name: "小米8",
-              img: require("../public/imgs/item-box-2.png"),
-            },
-            {
-              id: 4,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-            {
-              id: 1,
-              name: "小米9",
-              img: require("../public/imgs/item-box-1.png"),
-            },
-            {
-              id: 2,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-            {
-              id: 3,
-
-              name: "小米8",
-              img: require("../public/imgs/item-box-2.png"),
-            },
-            {
-              id: 4,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-          ],
-        },
-        {
-          id: 6,
-          content: "智能 路由器",
-          items: [
-            {
-              id: 1,
-              name: "小米9",
-              img: require("../public/imgs/item-box-1.png"),
-            },
-            {
-              id: 2,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-            {
-              id: 3,
-
-              name: "小米8",
-              img: require("../public/imgs/item-box-2.png"),
-            },
-            {
-              id: 4,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-            {
-              id: 1,
-              name: "小米9",
-              img: require("../public/imgs/item-box-1.png"),
-            },
-            {
-              id: 2,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-            {
-              id: 3,
-
-              name: "小米8",
-              img: require("../public/imgs/item-box-2.png"),
-            },
-            {
-              id: 4,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-            {
-              id: 1,
-              name: "小米9",
-              img: require("../public/imgs/item-box-1.png"),
-            },
-            {
-              id: 2,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-            {
-              id: 3,
-
-              name: "小米8",
-              img: require("../public/imgs/item-box-2.png"),
-            },
-            {
-              id: 4,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-            {
-              id: 1,
-              name: "小米9",
-              img: require("../public/imgs/item-box-1.png"),
-            },
-            {
-              id: 2,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-            {
-              id: 3,
-
-              name: "小米8",
-              img: require("../public/imgs/item-box-2.png"),
-            },
-            {
-              id: 4,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-            {
-              id: 1,
-              name: "小米9",
-              img: require("../public/imgs/item-box-1.png"),
-            },
-            {
-              id: 2,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-            {
-              id: 3,
-
-              name: "小米8",
-              img: require("../public/imgs/item-box-2.png"),
-            },
-            {
-              id: 4,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-            {
-              id: 1,
-              name: "小米9",
-              img: require("../public/imgs/item-box-1.png"),
-            },
-            {
-              id: 2,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-            {
-              id: 3,
-
-              name: "小米8",
-              img: require("../public/imgs/item-box-2.png"),
-            },
-            {
-              id: 4,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-          ],
-        },
-        {
-          id: 7,
-          content: "电源 配件",
-          items: [
-            {
-              id: 1,
-              name: "小米9",
-              img: require("../public/imgs/item-box-1.png"),
-            },
-            {
-              id: 2,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-            {
-              id: 3,
-
-              name: "小米8",
-              img: require("../public/imgs/item-box-2.png"),
-            },
-            {
-              id: 4,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-            {
-              id: 1,
-              name: "小米9",
-              img: require("../public/imgs/item-box-1.png"),
-            },
-            {
-              id: 2,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-            {
-              id: 3,
-
-              name: "小米8",
-              img: require("../public/imgs/item-box-2.png"),
-            },
-            {
-              id: 4,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-            {
-              id: 1,
-              name: "小米9",
-              img: require("../public/imgs/item-box-1.png"),
-            },
-            {
-              id: 2,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-            {
-              id: 3,
-
-              name: "小米8",
-              img: require("../public/imgs/item-box-2.png"),
-            },
-            {
-              id: 4,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-            {
-              id: 1,
-              name: "小米9",
-              img: require("../public/imgs/item-box-1.png"),
-            },
-            {
-              id: 2,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-            {
-              id: 3,
-
-              name: "小米8",
-              img: require("../public/imgs/item-box-2.png"),
-            },
-            {
-              id: 4,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-            {
-              id: 1,
-              name: "小米9",
-              img: require("../public/imgs/item-box-1.png"),
-            },
-            {
-              id: 2,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-            {
-              id: 3,
-
-              name: "小米8",
-              img: require("../public/imgs/item-box-2.png"),
-            },
-            {
-              id: 4,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-            {
-              id: 1,
-              name: "小米9",
-              img: require("../public/imgs/item-box-1.png"),
-            },
-            {
-              id: 2,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-            {
-              id: 3,
-
-              name: "小米8",
-              img: require("../public/imgs/item-box-2.png"),
-            },
-            {
-              id: 4,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-          ],
-        },
-        {
-          id: 8,
-          content: "健康 儿童",
-          items: [
-            {
-              id: 1,
-              name: "小米9",
-              img: require("../public/imgs/item-box-1.png"),
-            },
-            {
-              id: 2,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-            {
-              id: 3,
-
-              name: "小米8",
-              img: require("../public/imgs/item-box-2.png"),
-            },
-            {
-              id: 4,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-            {
-              id: 1,
-              name: "小米9",
-              img: require("../public/imgs/item-box-1.png"),
-            },
-            {
-              id: 2,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-            {
-              id: 3,
-
-              name: "小米8",
-              img: require("../public/imgs/item-box-2.png"),
-            },
-            {
-              id: 4,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-            {
-              id: 1,
-              name: "小米9",
-              img: require("../public/imgs/item-box-1.png"),
-            },
-            {
-              id: 2,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-            {
-              id: 3,
-
-              name: "小米8",
-              img: require("../public/imgs/item-box-2.png"),
-            },
-            {
-              id: 4,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-            {
-              id: 1,
-              name: "小米9",
-              img: require("../public/imgs/item-box-1.png"),
-            },
-            {
-              id: 2,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-            {
-              id: 3,
-
-              name: "小米8",
-              img: require("../public/imgs/item-box-2.png"),
-            },
-            {
-              id: 4,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-            {
-              id: 1,
-              name: "小米9",
-              img: require("../public/imgs/item-box-1.png"),
-            },
-            {
-              id: 2,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-            {
-              id: 3,
-
-              name: "小米8",
-              img: require("../public/imgs/item-box-2.png"),
-            },
-            {
-              id: 4,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-            {
-              id: 1,
-              name: "小米9",
-              img: require("../public/imgs/item-box-1.png"),
-            },
-            {
-              id: 2,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-            {
-              id: 3,
-
-              name: "小米8",
-              img: require("../public/imgs/item-box-2.png"),
-            },
-            {
-              id: 4,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-          ],
-        },
-        {
-          id: 9,
-          content: "耳机 音箱",
-          items: [
-            {
-              id: 1,
-              name: "小米9",
-              img: require("../public/imgs/item-box-1.png"),
-            },
-            {
-              id: 2,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-            {
-              id: 3,
-
-              name: "小米8",
-              img: require("../public/imgs/item-box-2.png"),
-            },
-            {
-              id: 4,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-            {
-              id: 1,
-              name: "小米9",
-              img: require("../public/imgs/item-box-1.png"),
-            },
-            {
-              id: 2,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-            {
-              id: 3,
-
-              name: "小米8",
-              img: require("../public/imgs/item-box-2.png"),
-            },
-            {
-              id: 4,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-            {
-              id: 1,
-              name: "小米9",
-              img: require("../public/imgs/item-box-1.png"),
-            },
-            {
-              id: 2,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-            {
-              id: 3,
-
-              name: "小米8",
-              img: require("../public/imgs/item-box-2.png"),
-            },
-            {
-              id: 4,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-            {
-              id: 1,
-              name: "小米9",
-              img: require("../public/imgs/item-box-1.png"),
-            },
-            {
-              id: 2,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-            {
-              id: 3,
-
-              name: "小米8",
-              img: require("../public/imgs/item-box-2.png"),
-            },
-            {
-              id: 4,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-            {
-              id: 1,
-              name: "小米9",
-              img: require("../public/imgs/item-box-1.png"),
-            },
-            {
-              id: 2,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-            {
-              id: 3,
-
-              name: "小米8",
-              img: require("../public/imgs/item-box-2.png"),
-            },
-            {
-              id: 4,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-            {
-              id: 1,
-              name: "小米9",
-              img: require("../public/imgs/item-box-1.png"),
-            },
-            {
-              id: 2,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-            {
-              id: 3,
-
-              name: "小米8",
-              img: require("../public/imgs/item-box-2.png"),
-            },
-            {
-              id: 4,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-          ],
-        },
-        {
-          id: 10,
-          content: "生活 箱包",
-          items: [
-            {
-              id: 1,
-              name: "小米9",
-              img: require("../public/imgs/item-box-1.png"),
-            },
-            {
-              id: 2,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-            {
-              id: 3,
-
-              name: "小米8",
-              img: require("../public/imgs/item-box-2.png"),
-            },
-            {
-              id: 4,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-            {
-              id: 1,
-              name: "小米9",
-              img: require("../public/imgs/item-box-1.png"),
-            },
-            {
-              id: 2,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-            {
-              id: 3,
-
-              name: "小米8",
-              img: require("../public/imgs/item-box-2.png"),
-            },
-            {
-              id: 4,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-            {
-              id: 1,
-              name: "小米9",
-              img: require("../public/imgs/item-box-1.png"),
-            },
-            {
-              id: 2,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-            {
-              id: 3,
-
-              name: "小米8",
-              img: require("../public/imgs/item-box-2.png"),
-            },
-            {
-              id: 4,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-            {
-              id: 1,
-              name: "小米9",
-              img: require("../public/imgs/item-box-1.png"),
-            },
-            {
-              id: 2,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-            {
-              id: 3,
-
-              name: "小米8",
-              img: require("../public/imgs/item-box-2.png"),
-            },
-            {
-              id: 4,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-            {
-              id: 1,
-              name: "小米9",
-              img: require("../public/imgs/item-box-1.png"),
-            },
-            {
-              id: 2,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-            {
-              id: 3,
-
-              name: "小米8",
-              img: require("../public/imgs/item-box-2.png"),
-            },
-            {
-              id: 4,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-            {
-              id: 1,
-              name: "小米9",
-              img: require("../public/imgs/item-box-1.png"),
-            },
-            {
-              id: 2,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-            {
-              id: 3,
-
-              name: "小米8",
-              img: require("../public/imgs/item-box-2.png"),
-            },
-            {
-              id: 4,
-              name: "k20Pro尊享版",
-              img: require("../public/imgs/item-box-3.jpg"),
-            },
-          ],
-        },
-      ],
+      navmenus: [],
       // 商品展示数据
-      products: [
-        {
-          id: 1,
-          name: "小米10",
-          msg: "自研银河九号处理器,秒杀NSA",
-          price: "9999",
-          img: require("../public/imgs/product/mi10.webp"),
-        },
-        {
-          id: 1,
-          name: "小米10",
-          msg: "自研银河九号处理器,秒杀NSA",
-          price: "9999",
-          img: require("../public/imgs/product/mi10.webp"),
-        },
-        {
-          id: 1,
-          name: "小米10",
-          msg: "自研银河九号处理器,秒杀NSA",
-          price: "999",
-          img: require("../public/imgs/product/mi10.webp"),
-        },
-        {
-          id: 1,
-          name: "小米10",
-          msg: "自研银河九号处理器,秒杀NSA",
-          price: "999",
-          img: require("../public/imgs/product/mi10.webp"),
-        },
-        {
-          id: 1,
-          name: "小米10",
-          msg: "自研银河九号处理器,秒杀NSA",
-          price: "999",
-          img: require("../public/imgs/product/mi10.webp"),
-        },
-        {
-          id: 1,
-          name: "小米10",
-          msg: "自研银河九号处理器,秒杀NSA",
-          price: "999",
-          img: require("../public/imgs/product/mi10.webp"),
-        },
-        {
-          id: 1,
-          name: "小米10",
-          msg: "自研银河九号处理器,秒杀NSA",
-          price: "999",
-          img: require("../public/imgs/product/mi10.webp"),
-        },
-        {
-          id: 1,
-          name: "小米10",
-          msg: "自研银河九号处理器,秒杀NSA",
-          price: "999",
-          img: require("../public/imgs/product/mi10.webp"),
-        },
-      ],
-      pro_left: require("../public/imgs/mix-alpha.jpg"),
+      products: [],
+      pro_left: null,
       // 广告图
-      adimgs: [
-        require("../public/imgs/ads/ads-1.jpg"),
-        require("../public/imgs/ads/ads-1.jpg"),
-        require("../public/imgs/ads/ads-1.jpg"),
-        require("../public/imgs/ads/ads-1.jpg"),
-      ],
+      adimgs: [],
       // banner
-      banner: require("../public/imgs/banner.webp"),
+      banner: null,
     };
   },
   components: {
     ServiceBar,
     Modal,
   },
-  mounted() {
-    // 轮播图
-    this.SwiperInit();
+  async mounted() {
     // 欢迎
     this.welcome(3000);
+    // 轮播图
+    await this.getSwipers();
+    this.SwiperInit();
+    this.getNavmenus();
+    // 商品展示
+    this.getProducts();
+    // adimg
+    this.getAdimg();
+    // banner
+    this.getBanner();
+    // Pro_left
+    this.getPro_left();
   },
   methods: {
     // 初始化swiper 轮播图
     SwiperInit() {
-      new Swiper(".swiper-container", {
-        loop: true, // 循环模式选项
-        autoplay: {
-          delay: 3000,
-          disableOnInteraction: false,
-        }, // 自动播放 3秒
-        observer: true,
-        navigation: {
-          nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev",
-        },
-        pagination: {
-          el: ".swiper-pagination",
-          clickable: true,
-        },
-        effect: "fade",
+      this.$nextTick(() => {
+        new Swiper(".swiper-container", {
+          loop: true, // 循环模式选项
+          autoplay: {
+            delay: 1000,
+            disableOnInteraction: false,
+          }, // 自动播放 3秒
+          observer: true,
+          navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+          },
+          pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+          },
+          effect: "fade",
+        });
       });
     },
-    // 欢迎
+    // time秒后弹出欢迎界面
     welcome(time) {
       // console.log(this.$storage);
       // 如果是本地会话第一次打开,就展示
@@ -1562,6 +191,30 @@ export default {
         this.modal.showModel = true;
         this.$storage.setItem("welcome", true);
       }, time);
+    },
+    // 请求轮播图数据
+    async getSwipers() {
+      this.swipers = await this.axios.get("/api/index/swipers");
+    },
+    // 请求轮播图菜单数据
+    async getNavmenus() {
+      this.navmenus = await this.axios.get("/api/index/navmenus");
+    },
+    // 请求商品展示数据
+    async getProducts() {
+      this.products = await this.axios.get("/api/index/products");
+    },
+    // adimg
+    async getAdimg() {
+      this.adimgs = await this.axios.get("/api/index/adimg");
+    },
+    // banner
+    async getBanner() {
+      this.banner = await this.axios.get("/api/index/banner");
+    },
+    // pro_left
+    async getPro_left() {
+      this.pro_left = await this.axios.get("/api/index/pro_left");
     },
   },
 };

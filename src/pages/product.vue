@@ -2,7 +2,7 @@
   <div>
     <ProductParam>
       <template v-slot:buy>
-        <a class="buy" :href="'/#/detail/'+id">立即送钱</a>
+        <a class="buy" :href="'/#/detail/' + id">立即送钱</a>
       </template>
     </ProductParam>
 
@@ -11,7 +11,12 @@
         <div class="section1"></div>
         <div class="section2">
           <a href="javascript:;" @click="videoHandler"></a>
-          <video src="../public/videos/product/mi10_1.mp4" muted loop autoplay></video>
+          <video
+            src="../public/videos/product/mi10_1.mp4"
+            muted
+            loop
+            autoplay
+          ></video>
         </div>
         <div class="section3">
           <div class="readme">
@@ -19,11 +24,12 @@
             <p>是我们最自豪的一部作品。</p>
             <p>
               凝聚了众多创新技术，
-              <span>120X</span>超远变焦、
-              <span>120W</span>秒充科技、
+              <span>120X</span>超远变焦、 <span>120W</span>秒充科技、
               <span>120Hz</span>专业屏幕。
             </p>
-            <p>它还由小米智能工厂打造，以更未来、更智能的制造工艺，呈现中国科技的力量。</p>
+            <p>
+              它还由小米智能工厂打造，以更未来、更智能的制造工艺，呈现中国科技的力量。
+            </p>
             <p>现在，就让它与你一起，</p>
             <p>拾级而上，一往无前。</p>
           </div>
@@ -62,10 +68,24 @@
     </div>
 
     <!-- 视频模态框 -->
-    <div class="video-dialog" :class="{'video-dialog-show':isShowVideo}" @click.self="closeVideo">
+    <div
+      class="video-dialog"
+      :class="{ 'video-dialog-show': isShowVideo }"
+      @click.self="closeVideo"
+    >
       <div class="video-container">
-        <a href="javascript:;" class="iconfont icon-guanbi" @click="closeVideo"></a>
-        <video id="videoId" src="../public/videos/product/mi10_1.mp4" controls loop preload="auto"></video>
+        <a
+          href="javascript:;"
+          class="iconfont icon-guanbi"
+          @click="closeVideo"
+        ></a>
+        <video
+          id="videoId"
+          src="../public/videos/product/mi10_1.mp4"
+          controls
+          loop
+          preload="auto"
+        ></video>
       </div>
     </div>
   </div>
@@ -113,7 +133,7 @@ export default {
       new Swiper(".swiper-mi10", {
         loop: true, // 循环模式选项
         autoplay: {
-          delay: 1000,
+          delay: 3000,
           disableOnInteraction: false,
         }, // 自动播放 3秒
         observer: true,

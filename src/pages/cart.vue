@@ -1,6 +1,9 @@
 <template>
   <div class="cart-root">
-    <order-header :pageTitle="'我的购物车'" :info="'温馨提示：产品是否购买成功，以最终下单为准哦，请尽快结算'">
+    <order-header
+      :pageTitle="'我的购物车'"
+      :info="'温馨提示：产品是否购买成功，以最终下单为准哦，请尽快结算'"
+    >
       <template v-slot:panda>
         <div>
           <a href="javascript:;">
@@ -9,7 +12,7 @@
             <div class="child">test</div>
           </a>
           <span>|</span>
-          <a href="javascript:;">我的订单</a>
+          <a href="/#/order/list">我的订单</a>
         </div>
       </template>
     </order-header>
@@ -19,7 +22,8 @@
           <li class="allcheck">
             <a href="javascript:;">
               <i class="iconfont icon-unchecked" @click="allcheck($event)"></i>
-            </a> 全选
+            </a>
+            全选
           </li>
           <li class="name">商品名称</li>
           <li class="singleprice">单价</li>
@@ -29,107 +33,36 @@
         </ul>
       </div>
       <div class="cart-body">
-        <div class="itembox">
+        <div
+          class="itembox"
+          v-for="(item, index) in carts.cartProductVoList"
+          :key="index"
+        >
           <ul>
             <li class="allcheck">
               <a href="javascript:;">
                 <!-- @click="check($event)" -->
-                <i class="iconfont icon-icons-"></i>
+                <i
+                  class="iconfont icon-unchecked"
+                  :class="{ 'icon-icons-': item.productSelected }"
+                ></i>
               </a>
             </li>
             <li class="pro-img">
-              <img src="../public/imgs/cart/pro-img1.jpg" alt />
+              <img :src="item.productMainImage" />
             </li>
-            <li class="name">小米10至尊纪念版 8GB+256GB 陶瓷黑</li>
-            <li class="singleprice">5599元</li>
+            <li class="name">{{ item.productName }}</li>
+            <li class="singleprice">{{ item.productPrice }}</li>
             <li class="count">
               <div class="count-cart">
-                <a href="javascript:;">-</a>
-                <input type="text" value="5" />
-                <a href="javascript:;">+</a>
+                <a href="javascript:;" @click="item.quantity--">-</a>
+                <input type="text" :value="item.quantity" />
+                <a href="javascript:;" @click="item.quantity++">+</a>
               </div>
             </li>
-            <li class="totalprice">5999元</li>
+            <li class="totalprice">{{ item.quantity * item.productPrice }}</li>
             <li class="cao">
-              <a href="javascript:;">×</a>
-            </li>
-          </ul>
-        </div>
-        <div class="itembox">
-          <ul>
-            <li class="allcheck">
-              <a href="javascript:;">
-                <!-- @click="check($event)" -->
-                <i class="iconfont icon-icons-"></i>
-              </a>
-            </li>
-            <li class="pro-img">
-              <img src="../public/imgs/cart/pro-img1.jpg" alt />
-            </li>
-            <li class="name">小米10至尊纪念版 8GB+256GB 陶瓷黑</li>
-            <li class="singleprice">5599元</li>
-            <li class="count">
-              <div class="count-cart">
-                <a href="javascript:;">-</a>
-                <input type="text" value="5" />
-                <a href="javascript:;">+</a>
-              </div>
-            </li>
-            <li class="totalprice">5999元</li>
-            <li class="cao">
-              <a href="javascript:;">×</a>
-            </li>
-          </ul>
-        </div>
-        <div class="itembox">
-          <ul>
-            <li class="allcheck">
-              <a href="javascript:;">
-                <!-- @click="check($event)" -->
-                <i class="iconfont icon-unchecked"></i>
-              </a>
-            </li>
-            <li class="pro-img">
-              <img src="../public/imgs/cart/pro-img1.jpg" alt />
-            </li>
-            <li class="name">小米10至尊纪念版 8GB+256GB 陶瓷黑</li>
-            <li class="singleprice">5599元</li>
-            <li class="count">
-              <div class="count-cart">
-                <a href="javascript:;">-</a>
-                <input type="text" value="5" />
-                <a href="javascript:;">+</a>
-              </div>
-            </li>
-            <li class="totalprice">5999元</li>
-            <li class="cao">
-              <a href="javascript:;">×</a>
-            </li>
-          </ul>
-        </div>
-        <div class="itembox">
-          <ul>
-            <li class="allcheck">
-              <a href="javascript:;">
-                <!-- @click="check($event)" -->
-                <i class="iconfont icon-unchecked"></i>
-              </a>
-            </li>
-            <li class="pro-img">
-              <img src="../public/imgs/cart/pro-img1.jpg" alt />
-            </li>
-            <li class="name">小米10至尊纪念版 8GB+256GB 陶瓷黑</li>
-            <li class="singleprice">5599元</li>
-            <li class="count">
-              <div class="count-cart">
-                <a href="javascript:;">-</a>
-                <input type="text" value="5" />
-                <a href="javascript:;">+</a>
-              </div>
-            </li>
-            <li class="totalprice">5999元</li>
-            <li class="cao">
-              <a href="javascript:;">×</a>
+              <a href="javascript:;" @click="remove(index)">×</a>
             </li>
           </ul>
         </div>
@@ -140,16 +73,16 @@
           <span class="sp">|</span>
           <span class="info">
             共
-            <span class="t">3</span>件商品，已选择
-            <span class="t">3</span>件
+            <span class="t">3</span>件商品，已选择 <span class="t">3</span>件
           </span>
         </div>
         <div class="right">
           <span class="totalprice">
             合计:
-            <span class="t">5999</span>元
+            <span class="t">{{ carts.cartTotalPrice }}</span
+            >元
           </span>
-          <a class="gopay" href="javascript:;">去结算</a>
+          <a class="gopay" href="/#/order/confirm">去结算</a>
         </div>
       </div>
     </div>
@@ -162,14 +95,27 @@ import OrderHeader from "../components/OrderHeader";
 import NavFooter from "../components/NavFooter";
 export default {
   name: "cart",
+  data() {
+    return {
+      carts: [],
+    };
+  },
   components: {
     OrderHeader,
     NavFooter,
   },
+  watch: {},
+  mounted() {
+    this.getCarts();
+  },
   methods: {
-    allcheck(e) {
-      e = e.currentTarget;
-      e.className = "iconfont icon-icons-";
+    // 请求购物车聊表
+    async getCarts() {
+      this.carts = await this.axios.get("/api/carts");
+    },
+    // 删除商品
+    remove(i) {
+      this.carts.cartProductVoList.splice(i, 1);
     },
   },
 };

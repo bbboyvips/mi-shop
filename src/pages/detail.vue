@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="detail-container">
     <ProductParam :checkedtemp="-1"></ProductParam>
 
     <div class="pro-box">
@@ -7,7 +7,11 @@
         <!-- 轮播图 -->
         <div class="swiper-container">
           <div class="swiper-wrapper">
-            <div class="swiper-slide" v-for="(item,index) in currPro.swipers" :key="index">
+            <div
+              class="swiper-slide"
+              v-for="(item, index) in currPro.swipers"
+              :key="index"
+            >
               <img :src="item" />
             </div>
           </div>
@@ -17,20 +21,20 @@
         </div>
       </div>
       <div class="box-right" :price="price">
-        <h2>{{versions.title}}</h2>
-        <p class="desc">{{versions.desc}}</p>
-        <p class="price">{{price}}元</p>
+        <h2>{{ versions.title }}</h2>
+        <p class="desc">{{ versions.desc }}</p>
+        <p class="price">{{ price }}元</p>
         <div class="buyparams">
           <div class="child">
             <p class="title">选择颜色</p>
             <ul>
               <li
-                :class="{'active':(item.name==proactive)}"
-                v-for="(item,index) in versions.type"
+                :class="{ active: item.name == proactive }"
+                v-for="(item, index) in versions.type"
                 :key="index"
                 @click="colorHandler(item)"
               >
-                <a href="javascript:;">{{item.name}}</a>
+                <a href="javascript:;">{{ item.name }}</a>
               </li>
             </ul>
           </div>
@@ -38,26 +42,47 @@
             <p class="title">选择版本</p>
             <ul>
               <li
-                :class="{'active':(item.msg==romramactive)}"
-                v-for="(item,index) in currPro.romram"
+                :class="{ active: item.msg == romramactive }"
+                v-for="(item, index) in currPro.romram"
                 :key="index"
                 @click="romramHandler(item)"
               >
-                <a href="javascript:;">{{item.msg}}</a>
+                <a href="javascript:;">{{ item.msg }}</a>
               </li>
             </ul>
           </div>
         </div>
         <div class="total">
-          <p class="title">{{versions.title}}+{{currPro.name}}+{{ romramactive}}</p>
-          <p class="price">总计:{{price}}元</p>
+          <p class="title">
+            {{ versions.title }}+{{ currPro.name }}+{{ romramactive }}
+          </p>
+          <p class="price">总计:{{ price }}元</p>
         </div>
         <div class="btn-box">
-          <a class="tocart" href="javascript:;">加入购物车</a>
-          <a class="like iconfont icon-shoucang" href="javascript:;">&nbsp;喜欢</a>
+          <a class="tocart" href="javascript:;" @click="modal.showModel = true"
+            >加入购物车</a
+          >
+          <a class="like iconfont icon-shoucang" href="javascript:;"
+            >&nbsp;喜欢</a
+          >
         </div>
       </div>
     </div>
+
+    <modal
+      @submit="cart"
+      :showModel="modal.showModel"
+      :title="modal.title"
+      :btnType="modal.btnType"
+      :sureText="modal.sureText"
+      :cancelText="modal.cancelText"
+    >
+      <template v-slot:modalBody>
+        <div class="modal-body-text">
+          加入购物车成功!永远相信美好的事情即将发生~
+        </div>
+      </template>
+    </modal>
   </div>
 </template>
 
@@ -66,11 +91,20 @@ import ProductParam from "../components/ProductParam";
 // swiper
 import Swiper from "swiper";
 import "swiper/dist/css/swiper.min.css";
+// Modal
+import Modal from "../components/Modal";
 
 export default {
   name: "detail",
   data() {
     return {
+      // 模态框数据
+      modal: {
+        title: "添加成功!",
+        btnType: 1,
+        showModel: false,
+        sureText: "查看购物车",
+      },
       id: this.$route.params.id, //获取商品ID
       // 商品版本数据
       versions: {},
@@ -85,7 +119,7 @@ export default {
       swiper: {},
     };
   },
-  components: { ProductParam },
+  components: { ProductParam, Modal },
   async mounted() {
     // 获取商品数据
     await this.getProduct();
@@ -96,9 +130,7 @@ export default {
   },
   methods: {
     async getProduct() {
-      await this.axios.get("/api/products/" + this.id).then((res) => {
-        this.versions = res;
-      });
+      this.versions = await this.axios.get("/api/products/30");
     },
     SwiperInit() {
       // 下一个UI帧再初始化swiper,从往上看到得到方法,确保数据已经加载完毕再初始化swiper,我用这个方法解决了不能loop的问题
@@ -147,15 +179,23 @@ export default {
       this.price = item.price;
       this.romramactive = item.msg;
     },
+    // 加入购物车
+    cart() {
+      // 进行网络请求
+      this.$router.push("/cart");
+    },
   },
 };
 </script>
 
 <style lang="scss" >
 @import "../assets/scss/mixin.scss";
-
+.detail-container {
+  @include clearfix();
+}
 .pro-box {
   width: 1226px;
+  height: 1000px;
   margin: 20px auto;
   @include clearfix();
   .box-left {

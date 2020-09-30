@@ -14,18 +14,20 @@ export default {
   },
   methods: {
     ...mapActions(["saveUserName", "saveCartCount"]),
-    getUser() {
-      // 通过缓存在cookie里的userid进行数据请求
-      this.axios.get("/api/user").then((data) => {
-        this.saveUserName(data.name);
-      });
+    // 请求用户数据
+    async getUser() {
+      let user = await this.axios.get("/api/user");
+      // 将用户名存入vuex
+      this.saveUserName(user.username);
     },
-    getCartCount() {
-      this.axios.get("/api/carts/sum").then((data) => {
-        this.saveCartCount(data.count);
-      });
+    // 请求购物车数据
+    async getCartCount() {
+      let cartCount = await this.axios.get("/api/carts/sum");
+      // 将购物车数量存入vuex
+      this.saveCartCount(cartCount);
     },
   },
+  
 };
 </script>
 <style lang="scss">

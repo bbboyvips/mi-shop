@@ -32,12 +32,12 @@
         <div class="topbar-user">
           <a v-if="!username" href="javascript:;" @click="toLogin">登录</a>
           <a v-if="!username" href="javascript:;">注册</a>
-          <a v-if="username" href="javascript:;">{{username}}</a>
+          <a v-if="username" href="javascript:;">{{ username }}</a>
           <a href="javascript:;">消息通知</a>
           <a v-if="username" href="javascript:;">我的订单</a>
-          <a href="javascript:;" class="cart">
+          <a href="/#/cart" class="cart">
             <span class="cart-icon iconfont icon-icon4"></span>
-            购物车({{cartCount}})
+            购物车({{ cartCount }})
           </a>
         </div>
       </div>
@@ -53,12 +53,12 @@
             <div class="children">
               <ul>
                 <!-- 可以使用v-for循环渲染 -->
-                <li v-for="(item,index) in items" :key="index" class="pro">
+                <li v-for="(item, index) in items" :key="index" class="pro">
                   <a href="javascript:;" class="item-img">
                     <img v-lazy="item.img" :alt="item.name" />
                   </a>
-                  <a href="javascript:;" class="item-name">{{item.name}}</a>
-                  <a href="javascript:;" class="item-price">{{item.price}}</a>
+                  <a href="javascript:;" class="item-name">{{ item.name }}</a>
+                  <a href="javascript:;" class="item-price">{{ item.price }}</a>
                 </li>
               </ul>
             </div>

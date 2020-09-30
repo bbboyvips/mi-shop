@@ -1,21 +1,41 @@
 <template>
-  <div class="product-nav" :class="{ topfixed: istopfixed}">
+  <div class="product-nav" :class="{ topfixed: istopfixed }">
     <div class="container">
       <div class="product-title">
         <h2>小米10至尊纪念版</h2>
       </div>
       <div class="product-menu">
-        <a href="javascript:;" :class="{'checked':checked===0}" @click="checked=0">概述</a>
+        <a
+          href="javascript:;"
+          :class="{ checked: checked === 0 }"
+          @click="checked = 0"
+          >概述</a
+        >
         <span class="sp">|</span>
-        <a href="javascript:;" :class="{'checked':checked===1}" @click="checked=1">参数</a>
+        <a
+          href="javascript:;"
+          :class="{ checked: checked === 1 }"
+          @click="checked = 1"
+          >参数</a
+        >
         <span class="sp">|</span>
         <a href="javascript:;">F码通道</a>
         <span class="sp">|</span>
-        <a href="javascript:;" :class="{'checked':checked===2}" @click="checked=2">研发历程</a>
+        <a
+          href="javascript:;"
+          :class="{ checked: checked === 2 }"
+          @click="checked = 2"
+          >研发历程</a
+        >
         <span class="sp">|</span>
         <a href="javascript:;">咨询客服</a>
         <span class="sp">|</span>
-        <a href="javascript:;" :class="{'checked':checked===3}" @click="checked=3">用户评价</a>
+        <a
+          href="javascript:;"
+          :class="{ checked: checked === 3 }"
+          @click="checked = 3"
+          >用户评价</a
+        >
         <slot name="buy"></slot>
       </div>
     </div>

@@ -11,7 +11,7 @@ import NavHeader from "../components/NavHeader";
 import NavFooter from "../components/NavFooter";
 
 export default {
-  name: "nav-home",
+  name: "home",
   data() {
     return {
       // 导航栏数据
@@ -53,16 +53,18 @@ export default {
           price: "￥1999",
         },
       ],
+      // 用户数据
+      user: {},
+      // 购物车数量
+      cartCount: 0,
     };
   },
   components: {
     NavHeader,
     NavFooter,
   },
-  mounted() {},
-  methods: {},
 };
 </script>
 
-<style lang="scss" >
+<style lang="scss" scoped>
 </style>
