@@ -1,13 +1,14 @@
 <template>
   <div>
+    <!-- 商品站吸顶栏组件 -->
     <ProductParam>
       <template v-slot:buy>
         <a class="buy" :href="'/#/detail/' + id">立即送钱</a>
       </template>
     </ProductParam>
-
     <div class="content">
       <div class="pro-container">
+        <!-- 商品站详情展示组件 -->
         <div class="section1"></div>
         <div class="section2">
           <a href="javascript:;" @click="videoHandler"></a>
@@ -66,7 +67,6 @@
         </div>
       </div>
     </div>
-
     <!-- 视频模态框 -->
     <div
       class="video-dialog"
@@ -95,7 +95,6 @@ import ProductParam from "../components/ProductParam";
 // swiper
 import Swiper from "swiper";
 import "swiper/dist/css/swiper.min.css";
-
 export default {
   name: "product",
   data() {
@@ -117,18 +116,22 @@ export default {
     this.getVideo();
   },
   methods: {
+    // 获取视频组件
     getVideo() {
       this.video = document.querySelector("#videoId");
     },
+    // 初始化视频播放的一系列状态
     videoHandler() {
       this.isShowVideo = true;
       this.video.load();
       this.video.play();
     },
+    // 关闭视频模态框行为
     closeVideo() {
       this.isShowVideo = false;
       this.video.pause();
     },
+    // 初始化swiper
     SwiperInit() {
       new Swiper(".swiper-mi10", {
         loop: true, // 循环模式选项
@@ -151,10 +154,8 @@ export default {
   },
 };
 </script>
-
 <style lang="scss" >
 @import "../assets/scss/mixin.scss";
-
 .product-nav .container .product-menu a.buy {
   color: #fff;
   display: inline-block;

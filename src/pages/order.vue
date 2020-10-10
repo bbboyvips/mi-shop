@@ -1,6 +1,8 @@
 <template>
   <div>
+    <!-- 子路由渲染 -->
     <router-view />
+    <!-- 订单的footer -->
     <nav-footer></nav-footer>
   </div>
 </template>

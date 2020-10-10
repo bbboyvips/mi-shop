@@ -1,21 +1,12 @@
 <template>
+  <!-- 顶部服务组件 -->
   <div class="service-container">
     <ul class="service">
-      <li>
-        <i class="iconfont icon-banshou"></i> 预约维修服务
-      </li>
-      <li>
-        <i class="iconfont icon-qitianwuliyoutuihuan"></i>7天无理由退货
-      </li>
-      <li>
-        <i class="iconfont icon-15tianbaotui01"></i>15天免费换货
-      </li>
-      <li>
-        <i class="iconfont icon-99yuanbaoyou"></i>满99元包邮
-      </li>
-      <li>
-        <i class="iconfont icon-dizhi1"></i>520余家售后网点
-      </li>
+      <li><i class="iconfont icon-banshou"></i> 预约维修服务</li>
+      <li><i class="iconfont icon-qitianwuliyoutuihuan"></i>7天无理由退货</li>
+      <li><i class="iconfont icon-15tianbaotui01"></i>15天免费换货</li>
+      <li><i class="iconfont icon-99yuanbaoyou"></i>满99元包邮</li>
+      <li><i class="iconfont icon-dizhi1"></i>520余家售后网点</li>
     </ul>
   </div>
 </template>

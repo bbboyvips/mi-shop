@@ -1,5 +1,6 @@
 <template>
   <div class="root-container">
+    <!-- 头部组件 -->
     <order-header
       :pageTitle="'订单确认'"
       :info="'请仔细确认相关信息无误,比如收货地址'"
@@ -15,6 +16,7 @@
       </template>
     </order-header>
     <div class="container">
+      <!-- 用户地址模块 -->
       <div class="address">
         <div class="title">收货地址</div>
         <div class="adr-container">
@@ -39,6 +41,7 @@
           </div>
         </div>
       </div>
+      <!-- 订单列表模块 -->
       <div class="pro">
         <div class="title">商品及优惠券</div>
         <div class="oder-container">
@@ -64,14 +67,17 @@
           </div>
         </div>
       </div>
+      <!-- 配送方式模块 -->
       <div class="baoyou">
         <div class="title">配送方式</div>
         <span class="fangshi">包邮</span>
       </div>
+      <!-- 电子发票 -->
       <div class="fapiao">
         <div class="title">电子发票</div>
         <span class="fangshi">电子普通发票个人> 个人</span>
       </div>
+      <!-- 订单详情内容 -->
       <div class="detail">
         <div class="title">订单详情</div>
         <div class="right-section">
@@ -83,6 +89,7 @@
           <p>应付总额:<span>200元</span></p>
         </div>
       </div>
+      <!-- 底部按钮组 -->
       <div class="btn-group">
         <a href="/#/order/pay">立即下单</a>
         <a href="/#/cart">返回购物车</a>

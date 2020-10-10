@@ -1,5 +1,6 @@
 <template>
   <div class="orderpay-root">
+    <!-- 头部组件 -->
     <order-header
       :pageTitle="'订单支付'"
       :info="'请仔细确认相关信息无误,比如收货地址'"
@@ -15,6 +16,7 @@
       </template>
     </order-header>
     <div class="container">
+      <!-- 订单支付详情 -->
       <div class="pay">
         <div class="succicon"><i class="iconfont icon-chenggong"></i></div>
         <div class="ordermsg">
@@ -37,6 +39,7 @@
           </div>
         </div>
       </div>
+      <!-- 支付方式模块 -->
       <div class="pay-type">
         <div class="title">选择以下支付方式付款</div>
         <div class="content">

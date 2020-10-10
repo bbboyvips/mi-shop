@@ -4,6 +4,10 @@
   </div>
 </template>
 <script>
+
+// 设置页面标题
+document.title = "小米商城";
+
 import { mapActions } from "vuex";
 
 export default {
@@ -27,7 +31,6 @@ export default {
       this.saveCartCount(cartCount);
     },
   },
-  
 };
 </script>
 <style lang="scss">
@@ -37,5 +40,7 @@ export default {
 // @import "./assets/scss/config.scss";
 // 字体图标
 @import "./assets/font/iconfont.css";
+// 小米商城字体
+@import "./assets/font/xiaomi.css";
 </style>
 

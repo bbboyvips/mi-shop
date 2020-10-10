@@ -99,7 +99,9 @@
       :cancelText="modal.cancelText"
     >
       <template v-slot:modalBody>
-        <div class="modal-body-text">所有数据均采用mock模拟,购物愉快!</div>
+        <div class="modal-body-text">
+          所有数据均采用mock模拟,并没有交换后台数据,所以交互有限,购物愉快!
+        </div>
       </template>
     </modal>
   </div>

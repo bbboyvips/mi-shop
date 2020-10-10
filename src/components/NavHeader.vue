@@ -33,6 +33,7 @@
           <a v-if="!username" href="javascript:;" @click="toLogin">登录</a>
           <a v-if="!username" href="javascript:;">注册</a>
           <a v-if="username" href="javascript:;">{{ username }}</a>
+          <a v-if="username" href="javascript:;" @click="logout">退出登录</a>
           <a href="javascript:;">消息通知</a>
           <a v-if="username" href="javascript:;">我的订单</a>
           <a href="/#/cart" class="cart">
@@ -87,7 +88,7 @@
   </div>
 </template>
 <script>
-import { mapState } from "vuex";
+import { mapMutations, mapState } from "vuex";
 
 export default {
   name: "nav-header",
@@ -101,8 +102,18 @@ export default {
   },
   mounted() {},
   methods: {
+    // 将mutations映射为组件方法
+    ...mapMutations(["saveUserName", "saveCartCount"]),
+    // 去往登录页面
     toLogin() {
       this.$router.push("/login");
+    },
+    // 用户退出登录
+    logout() {
+      // 清空vuex保存的数据
+      this.saveUserName("");
+      this.saveCartCount(0);
+      // 如果有服务器对接应该发送一个服务器请求,让服务器清楚相关的数据
     },
   },
 };

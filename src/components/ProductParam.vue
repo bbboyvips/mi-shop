@@ -1,4 +1,5 @@
 <template>
+  <!-- 商品站的顶栏,具有吸顶效果 -->
   <div class="product-nav" :class="{ topfixed: istopfixed }">
     <div class="container">
       <div class="product-title">

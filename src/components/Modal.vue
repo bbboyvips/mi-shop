@@ -1,35 +1,55 @@
 <template>
+  <!-- vue提供的过渡动画组件 -->
   <transition name="modalt">
+    <!-- 模态框组件 -->
     <div class="modal" v-show="showModel">
+      <!-- 遮蔽罩 -->
       <div class="mask"></div>
+      <!-- 模态框主体内容 -->
       <div class="modal-dialog">
         <div class="modal-header">
-          <span>{{title}}</span>
+          <span>{{ title }}</span>
         </div>
         <div class="modal-body">
-          <!-- 新版插槽语法 -->
+          <!-- 
+            新版插槽语法
+            这里的内容由父组件决定如何渲染
+           -->
           <slot name="modalBody" :row="meta"></slot>
         </div>
+        <!-- 
+          footer
+          
+          用来放置按钮,通过组件的props来确定按钮的三种类型
+          1 为只有确定按钮
+          2 为只有取消按钮
+          3 为两者都有
+         -->
         <div class="modal-footer">
           <a
-            v-if="btnType==1"
+            v-if="btnType == 1"
             href="javascript:;"
             class="btn"
             v-on:click="$emit('submit')"
-          >{{sureText}}</a>
+            >{{ sureText }}</a
+          >
           <a
-            v-if="btnType==2"
+            v-if="btnType == 2"
             href="javascript:;"
             class="btn"
             v-on:click="$emit('cancel')"
-          >{{cancelText}}</a>
-          <div v-if="btnType==3" class="btn-group">
-            <a href="javascript:;" class="btn" v-on:click="$emit('submit')">{{sureText}}</a>
+            >{{ cancelText }}</a
+          >
+          <div v-if="btnType == 3" class="btn-group">
+            <a href="javascript:;" class="btn" v-on:click="$emit('submit')">{{
+              sureText
+            }}</a>
             <a
               href="javascript:;"
               class="btn btn-default"
               v-on:click="$emit('cancel')"
-            >{{cancelText}}</a>
+              >{{ cancelText }}</a
+            >
           </div>
         </div>
       </div>

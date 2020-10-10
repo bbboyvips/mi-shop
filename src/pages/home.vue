@@ -1,7 +1,10 @@
 <template>
   <div>
+    <!-- 顶部栏 -->
     <nav-header :items="items"></nav-header>
+    <!-- 子路由渲染 -->
     <router-view />
+    <!-- 底部 -->
     <nav-footer></nav-footer>
   </div>
 </template>
@@ -53,10 +56,6 @@ export default {
           price: "￥1999",
         },
       ],
-      // 用户数据
-      user: {},
-      // 购物车数量
-      cartCount: 0,
     };
   },
   components: {

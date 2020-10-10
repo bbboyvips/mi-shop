@@ -1,6 +1,7 @@
 <template>
   <div>
     <div class="login-form">
+      <!-- 二维码图片 -->
       <div class="qrcode">
         <img :src="qrcodeimg" />
       </div>

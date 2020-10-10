@@ -4,8 +4,9 @@
       <div class="left">
         <a href="/" class="logo"></a>
         <div class="header-title">
-          <h2>{{pageTitle}}</h2>
-          <p>{{info}}</p>
+          <!-- 内容通过传递过来的props决定 -->
+          <h2>{{ pageTitle }}</h2>
+          <p>{{ info }}</p>
         </div>
       </div>
       <div class="right">

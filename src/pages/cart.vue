@@ -73,7 +73,7 @@
           <span class="sp">|</span>
           <span class="info">
             共
-            <span class="t">3</span>件商品，已选择 <span class="t">3</span>件
+            <span class="t">3</span>件商品，已选择 <span class="t">1件</span>件
           </span>
         </div>
         <div class="right">

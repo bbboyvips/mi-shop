@@ -1,5 +1,6 @@
 <template>
   <div>
+    <!-- 登录表单 -->
     <div class="login-form">
       <input type="text" v-model="user.name" placeholder="邮箱/手机号/小米ID" />
       <input type="password" v-model="user.password" placeholder="密码" />
@@ -12,6 +13,7 @@
         <span>|</span>
         <a href="javascript:;">忘记密码?</a>
       </p>
+      <!-- 第三方接口登录 -->
       <div class="other-login">
         <fieldset>
           <legend>其他方式登录</legend>
