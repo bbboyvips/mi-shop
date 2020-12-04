@@ -116,19 +116,19 @@ Mock
     .mock('/api/index/swipers', {
         "status": 0,
         "data": [{
-                img: require("../public/imgs/slider/slide-1.jpg")
+                img: require("../public/imgs/index-swiper/1.jpg")
             },
             {
-                img: require("../public/imgs/slider/slide-2.jpg")
+                img: require("../public/imgs/index-swiper/2.webp")
             },
             {
-                img: require("../public/imgs/slider/slide-3.jpg")
+                img: require("../public/imgs/index-swiper/3.webp")
             },
             {
-                img: require("../public/imgs/slider/slide-4.jpg")
+                img: require("../public/imgs/index-swiper/4.webp")
             },
             {
-                img: require("../public/imgs/slider/slide-5.jpg")
+                img: require("../public/imgs/index-swiper/6.webp")
             },
         ]
     })

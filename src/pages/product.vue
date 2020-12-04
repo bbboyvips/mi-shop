@@ -13,7 +13,7 @@
         <div class="section2">
           <a href="javascript:;" @click="videoHandler"></a>
           <video
-            src="../public/videos/product/mi10_1.mp4"
+            src="https://cdn.cnbj1.fds.api.mi-img.com/product-images/mi10ultra/index_08.mp4"
             muted
             loop
             autoplay
